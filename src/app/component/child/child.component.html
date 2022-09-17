@@ -1,0 +1,13 @@
+<div class="child">
+  <h1>
+    Child Component
+  </h1>
+
+  <h2>
+    부모에서 전달해준값 : {{ master }}
+  </h2>
+
+  <ion-input placeholder="부모에 전달할 값을 입력하세요." [(ngModel)]="sendParentData"></ion-input>
+
+  <ion-button (click)="sendParent()">부모데이터 전달</ion-button>
+</div>
