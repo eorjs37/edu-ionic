@@ -46,7 +46,7 @@ ionic cordova build ios
 
 # Angular 사용
 
-## LifeCycle
+## 1.LifeCycle
 
 > 인스턴스가 생성되고 소멸되기까지의 과정을 말한다. 순서는 아래처럼 이루어진다.  
 > constructor => ngOnChanges => ngOnInit => ngDoCheck => ngOnDestory  
@@ -72,7 +72,7 @@ ionic cordova build ios
 
 > ionic lifecycle도 존재하므로 참조하면 될듯하며 https://ionicframework.com/docs/angular/lifecycle 여기서 확인이 가능하다.
 
-## @Input
+## 2. @Input
 
 > vue에서 props의 같은 역할을 한다. 부모컴퍼넌트에서 데이터를 받고 싶을때 사용
 
@@ -115,7 +115,7 @@ export class ChildComponent {
 <h1>{{ master }}</h1>
 ```
 
-## @Output
+## 3. @Output
 
 > vue에서는 emit역할로 부모컴퍼넌트한테 값을 전달할때 사용된다.  
 > 전체코드는 child.component.ts, child.component.html, home.page.html, home.page.ts를 참조하면 된다.
@@ -185,7 +185,7 @@ export class HomePage implements OnInit {
 </ion-content>
 ```
 
-## ngModel
+## 4. ngModel
 
 > vue에서는 v-model과 같다.  
 > 사용할려면 app.module.ts에서 FormsModule를 import 해줘야 한다.
@@ -252,4 +252,54 @@ export class ChildComponent {
     [(ngModel)]="sendParentData"
   ></ion-input>
 </div>
+```
+
+## 5. Router
+
+> vue에서 처럼 angular에서도 라우터가 존재한다.
+
+### navigate
+
+> 이동하고자 하는 화면으로 이동할때 사용된다.
+
+#### 파라미터가 없는 경우
+
+```typescript
+export class HomePage {
+  constructor(private router: Router) {}
+  //이동하고자 하는 경로로 이동하고 싶을때 사용된다.
+  moveRouter(path: string) {
+    this.router.navigate([path]);
+  }
+}
+```
+
+#### 파라미터가 있는 경우
+
+> 파라미터가 있는 경우 key:value형태로 {key:value} 형태로 던져준다.  
+> 파리미터 받을 때는 ActivatedRoute를 활용하여 받을 수 있다.
+
+```typescript
+import { Router } from "@angular/router";
+// 파라미터 던지는 부분
+export class HomePage {
+  constructor(private router: Router) {}
+  //이동하고자 하는 경로로 이동하고 싶을때 사용된다.
+  moveRouter(path: string) {
+    this.router.navigate([path, { id: 1 }]);
+  }
+}
+
+//파라미터 받는 부분
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+
+export class ListDetailPage implements OnInit {
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    console.log("id : ", id);
+  }
+}
 ```
