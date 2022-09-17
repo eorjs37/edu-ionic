@@ -303,3 +303,103 @@ export class ListDetailPage implements OnInit {
   }
 }
 ```
+
+## 6. Backend 통신 부분
+
+> angular 에서는 axios를 사용하지 않고 angular/http를 사용한다.
+> 이를 위해서는 app.moudule.ts 세팅이 필요하다.
+
+#### app.module.ts
+
+```typescript
+.
+.
+.
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  .
+  .
+  .
+  imports: [
+    .
+    .
+    .
+    HttpClientModule,
+  ],
+  .
+  .
+  .
+})
+export class AppModule {}
+```
+
+### api 폴더 만들기
+
+```
+ionic g service service/api
+```
+
+위 명령어를 커멘트창에 입력하면 자동으로 파일을 만들어준다.
+
+#### service/api.service.ts
+
+```typescript
+import { Injectable } from "@angular/core";
+import { environment } from "@/environments/environment";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+@Injectable({
+  providedIn: "root",
+})
+export class ApiService {
+  //http options
+  httpOptions = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
+  };
+  constructor(private http: HttpClient) {}
+
+  /**
+   *
+   * @returns coffeeList
+   */
+  getCoffeAll() {
+    //사용하고자 하는 http method를 사용하면 된다.
+    return this.http.get(environment.apiUrl + "coffees/all", this.httpOptions);
+  }
+}
+```
+
+#### list.page.ts
+
+> 사용하고자 하는 api를 import하여 해당화면에서 사용한다.
+
+```typescript
+import { Component, OnInit } from "@angular/core";
+import { ApiService } from "@/app/service/api.service";
+
+@Component({
+  selector: "app-list",
+  templateUrl: "./list.page.html",
+  styleUrls: ["./list.page.scss"],
+})
+export class ListPage implements OnInit {
+  public coffeeList: any;
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {
+    //1.subscribe를 호출해야 api를 호출한다.
+    this.apiService.getCoffeAll().subscribe(
+      //1-1. 응답 데이터 받는 부분
+      (res) => {
+        this.coffeeList = res;
+      },
+      //1-2. error 데이터 받는 부분
+      (error) => {
+        console.error("error : ", error);
+      },
+      //1-3. HTTP 통신이 끝나는 부분
+      () => console.log("HTTP request completed.")
+    );
+  }
+}
+```

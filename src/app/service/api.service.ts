@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
   httpOptions = {
-    'Access-Control-Allow-Origin': '*',
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   constructor(private http: HttpClient) {}
@@ -16,6 +15,6 @@ export class ApiService {
    * @returns coffeeList
    */
   getCoffeAll() {
-    return this.http.get(environment.apiUrl + 'coffes/all', this.httpOptions);
+    return this.http.get(environment.apiUrl + 'coffees/all', this.httpOptions);
   }
 }
