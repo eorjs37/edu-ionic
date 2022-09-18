@@ -404,7 +404,7 @@ export class ListPage implements OnInit {
 }
 ```
 
-## 7. ngFor(v-for),ngIf(ngIf)
+## 7. ngFor(v-for),ngIf(v-if)
 
 > vue에서와 마찬가지로 v-for,v-if가 angular 에서는 ngFor와,ngIf를 사용할 수 있다.
 
