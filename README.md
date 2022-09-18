@@ -403,3 +403,32 @@ export class ListPage implements OnInit {
   }
 }
 ```
+
+## 7. ngFor(v-for),ngIf(ngIf)
+
+> vue에서와 마찬가지로 v-for,v-if가 angular 에서는 ngFor와,ngIf를 사용할 수 있다.
+
+#### list.page.html
+
+```html
+<ion-header>
+  <ion-toolbar>
+    <ion-title>list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- ngIf를 사용할수 있다. -->
+  <ion-list *ngIf="condition; else elseBlock">
+    <!-- ngFor를 사용할수 있다. -->
+    <ion-item *ngFor="let item of coffeeList;index as i">
+      <ion-label>{{ item.menuNm }} / {{ item.price }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- ngIf 이외의 조건일 때 보여준다. -->
+  <ng-template #elseBlock>
+    <h1 class="ion-text-center">NO FOUND</h1>
+  </ng-template>
+</ion-content>
+```

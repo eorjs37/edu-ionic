@@ -7,13 +7,19 @@ import { ApiService } from '@/app/service/api.service';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
-  public coffeeList: any;
+  public coffeeList: any = [];
+  public condition: boolean;
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
+    //
+    this.condition = false;
     this.apiService.getCoffeAll().subscribe(
       (res) => {
         this.coffeeList = res;
+        if (this.coffeeList.length > 0) {
+          this.condition = true;
+        }
       },
       (error) => {
         console.error('error : ', error);
