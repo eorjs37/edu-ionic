@@ -8,7 +8,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
-
+//voice record
+import { Media } from '@awesome-cordova-plugins/media/ngx';
+//File
+import { File } from '@awesome-cordova-plugins/file/ngx';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,7 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Media,
+    File,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

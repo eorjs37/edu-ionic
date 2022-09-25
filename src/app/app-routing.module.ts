@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'list-detail',
     loadChildren: () => import('./page/list-detail/list-detail.module').then( m => m.ListDetailPageModule)
   },
+  {
+    path: 'voice-record',
+    loadChildren: () => import('./page/voice-record/voice-record.module').then( m => m.VoiceRecordPageModule)
+  },
 ];
 
 @NgModule({
