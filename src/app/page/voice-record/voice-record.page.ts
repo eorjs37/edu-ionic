@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaPluginService } from '@/app/service/media-plugin.service';
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-voice-record',
   templateUrl: './voice-record.page.html',
@@ -7,18 +8,26 @@ import { MediaPluginService } from '@/app/service/media-plugin.service';
 })
 export class VoiceRecordPage implements OnInit {
   public fileList = [];
+
   private index: number;
-  constructor(private mediaPluginService: MediaPluginService) {
+  constructor(
+    private mediaPluginService: MediaPluginService,
+    private plt: Platform
+  ) {
     this.index = 0;
   }
 
-  async ngOnInit() {
-    await this.mediaPluginService.checkDir();
+  ngOnInit() {
+    this.plt.ready().then(async () => {
+      await this.mediaPluginService.checkDir();
 
-    this.loadFiles();
+      this.loadFiles();
+    });
   }
 
   async onMakeFile() {
+    console.log('onMakeFile');
+
     await this.mediaPluginService.makeFile(`test${this.index}`);
     this.index++;
     this.loadFiles();

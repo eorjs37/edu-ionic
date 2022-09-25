@@ -8,13 +8,16 @@ import { VoiceRecordPageRoutingModule } from './voice-record-routing.module';
 
 import { VoiceRecordPage } from './voice-record.page';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VoiceRecordPageRoutingModule
+    VoiceRecordPageRoutingModule,
+    FontAwesomeModule,
   ],
-  declarations: [VoiceRecordPage]
+  declarations: [VoiceRecordPage],
 })
 export class VoiceRecordPageModule {}

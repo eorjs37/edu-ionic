@@ -12,6 +12,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { Media } from '@awesome-cordova-plugins/media/ngx';
 //File
 import { File } from '@awesome-cordova-plugins/file/ngx';
+
+//font-awesome
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +29,7 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
+    FontAwesomeModule,
     HttpClientModule,
   ],
   providers: [
@@ -28,4 +39,8 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(libary: FaIconLibrary) {
+    libary.addIconPacks(fas, fab, far);
+  }
+}
