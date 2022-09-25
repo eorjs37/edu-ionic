@@ -5,5 +5,45 @@
 </ion-header>
 
 <ion-content>
+  <div class="ion-text-center">
+    <ion-button (click)="onMakeFile()">
+      <ion-icon slot="start" name="star"></ion-icon>
+      파일생성
+    </ion-button>
+  </div>
+  <div class="ion-text-center">
+    <ion-button (click)="onStartRecord()">
+      <ion-icon slot="start" name="star"></ion-icon>
+      Record
+    </ion-button>
+  </div>
+
+  <div class="ion-text-center">
+    <ion-button (click)="onStopRecord()">
+      <ion-icon slot="start" name="star"></ion-icon>
+      Stop
+    </ion-button>
+  </div>
+
+  <div class="ion-text-center">
+    <ion-button (click)="onPlayRecord()">
+      <ion-icon slot="start" name="star"></ion-icon>
+      Play Record
+    </ion-button>
+  </div>
+
+
+  <div class="ion-text-center">
+    <ion-button (click)="onStopRecordFile()">
+      <ion-icon slot="start" name="star"></ion-icon>
+      Stop Record
+    </ion-button>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let item of fileList" (click)="onDeleteFile(item.name)">
+      <ion-label>{{ item.name }}</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
