@@ -1,29 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      MAIN11
-    </ion-title>
+    <ion-title> MAIN11 </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <div class="ion-text-center">
-    <h1>
-      Parent Component
-    </h1>
+    <h1>Parent Componentdd</h1>
   </div>
 
-
-  <app-child [master]="'parent data'" (sendChildData)="onChildData($event)"></app-child>
+  <app-child
+    [master]="'parent data'"
+    (sendChildData)="onChildData($event)"
+  ></app-child>
 
   <div>
-    <h4>
-      자식한테서 전달받은 데이터 : {{ getChildSendData }}
-    </h4>
+    <h4>자식한테서 전달받은 데이터 : {{ getChildSendData }}</h4>
   </div>
 
-  <hr>
+  <hr />
 
   <div class="ion-text-center">
     <ion-button (click)="moveRouter('list')">라우터 이동</ion-button>
@@ -33,8 +28,4 @@
   <div class="ion-text-center">
     <ion-button (click)="moveRouter('voice-record')">Voice Recorder</ion-button>
   </div>
-
-
-
-
 </ion-content>

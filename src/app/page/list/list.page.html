@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>list</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <ion-list *ngIf="condition; else elseBlock">
     <ion-item *ngFor="let item of coffeeList;index as i">
       <ion-label>{{ item.menuNm }} / {{ item.price }}</ion-label>
@@ -15,5 +17,4 @@
   <ng-template #elseBlock>
     <h1 class="ion-text-center">NO FOUND</h1>
   </ng-template>
-
 </ion-content>

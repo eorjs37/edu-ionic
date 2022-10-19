@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>voice-record</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <div class="ion-text-center">
     <ion-button (click)="onMakeFile()">
       <ion-icon slot="start" name="star"></ion-icon>
@@ -33,7 +35,6 @@
     </ion-button>
   </div>
 
-
   <div class="ion-text-center">
     <ion-button (click)="onStopRecordFile()">
       <ion-icon slot="start" name="star"></ion-icon>
@@ -46,5 +47,4 @@
       <ion-label>{{ item.name }}</ion-label>
     </ion-item>
   </ion-list>
-
 </ion-content>
