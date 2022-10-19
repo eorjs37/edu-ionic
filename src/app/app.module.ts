@@ -13,6 +13,12 @@ import { Media } from '@awesome-cordova-plugins/media/ngx';
 //File
 import { File } from '@awesome-cordova-plugins/file/ngx';
 
+//InAppBrowser
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+
+//AppLauncher
+import { AppLauncher } from '@ionic-native/app-launcher/ngx';
+
 //font-awesome
 import {
   FontAwesomeModule,
@@ -36,6 +42,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Media,
     File,
+    InAppBrowser,
+    AppLauncher,
   ],
   bootstrap: [AppComponent],
 })
