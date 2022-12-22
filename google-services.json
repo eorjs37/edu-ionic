@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "686819257815",
+    "project_id": "edu-ionic-app",
+    "storage_bucket": "edu-ionic-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686819257815:android:88693ef1f5649301fd6f92",
+        "android_client_info": {
+          "package_name": "com.carrot.eduapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686819257815-fl0lbaaqfovjei3ksj7mkf1nmfnsaj1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoxDOSwxxxOQDLJ8aErVzQbG9NG9Jdl4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686819257815-fl0lbaaqfovjei3ksj7mkf1nmfnsaj1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
