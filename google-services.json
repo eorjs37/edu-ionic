@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:686819257815:android:88693ef1f5649301fd6f92",
+        "mobilesdk_app_id": "1:686819257815:android:ba00a6c3ef0fa9b1fd6f92",
         "android_client_info": {
           "package_name": "com.carrot.eduapp"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "686819257815-d53d8aurs36rk9ejpkajamjt5s3k1kpe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carrot.eduapp",
+            "certificate_hash": "b6862499f6b66ed2c7846c1e1aa753c5b1a742e7"
+          }
+        },
         {
           "client_id": "686819257815-fl0lbaaqfovjei3ksj7mkf1nmfnsaj1j.apps.googleusercontent.com",
           "client_type": 3

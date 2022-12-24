@@ -28,6 +28,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
+//FCM
+import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
+
+//LocalNotifcications
+import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -44,6 +49,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
     File,
     InAppBrowser,
     AppLauncher,
+    FCM,
+    LocalNotifications,
   ],
   bootstrap: [AppComponent],
 })
