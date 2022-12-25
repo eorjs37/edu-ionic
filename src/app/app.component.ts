@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 import { Platform } from '@ionic/angular';
-import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+import {
+  LocalNotifications,
+  ELocalNotificationTriggerUnit,
+} from '@awesome-cordova-plugins/local-notifications/ngx';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -20,12 +23,25 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(async () => {
       await this.getToken();
 
-      await this.localNotifications.on('trigger').subscribe((data) => {
-        console.log(data);
-      });
-      // await this.localNotifications.getAllScheduled().then((list) => {
-      //   console.log(list);
-      // });
+      const isIos: boolean = await this.platform.is('ios');
+
+      if (isIos) {
+        this.fcm.requestPushPermission({
+          ios9Support: {
+            timeout: 10,
+            interval: 0.3,
+          },
+        });
+        this.testLocalNoti();
+      }
+
+      try {
+        const payload = await this.fcm.getInitialPushPayload();
+
+        if (payload) {
+          this.router.navigate(['list-detail', { id: 1 }]);
+        }
+      } catch (error) {}
     });
   }
 
@@ -51,10 +67,33 @@ export class AppComponent implements OnInit {
   }
 
   localNoti(data) {
+    console.log('data : ', data);
+
     this.localNotifications.schedule({
+      id: 1,
+
       text: data.body,
-      trigger: { at: new Date(new Date().getTime() + 1000) },
+      trigger: {
+        firstAt: new Date(new Date().getTime() + 1000),
+        every: ELocalNotificationTriggerUnit.MINUTE,
+      },
+      foreground: true,
     });
+  }
+
+  testLocalNoti() {
+    this.localNotifications.schedule({
+      id: 0,
+      text: 'textssss',
+
+      trigger: {
+        at: new Date(new Date().getTime() + 1000),
+        every: ELocalNotificationTriggerUnit.MINUTE,
+      },
+      foreground: true,
+    });
+
+    this.localNotifications.clearAll();
   }
 
   localNotiClickEvent() {
